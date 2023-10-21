@@ -22,5 +22,6 @@ USER mindspore
 WORKDIR /opt/app/
 
 COPY  --chown=mindspore --from=BUILDER /go/src/github.com/opensourceways/robot-gitlab-hook-delivery/robot-gitlab-hook-delivery /opt/app/robot-gitlab-hook-delivery
+RUN chmod 550 /opt/app/robot-gitlab-hook-delivery
 
 ENTRYPOINT ["/opt/app/robot-gitlab-hook-delivery"]
