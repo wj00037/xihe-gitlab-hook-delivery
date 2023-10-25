@@ -55,12 +55,12 @@ func (d *delivery) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		},
 	)
 
-	switch eventType {
-	case string(gitlab.EventTypeSystemHook):
+	if eventType == string(gitlab.EventTypeSystemHook) {
 		if err := d.deliverySystemHook(payload, r.Header, l); err != nil {
 			l.Error(err.Error())
 		}
 	}
+
 }
 
 type eventBody struct {
